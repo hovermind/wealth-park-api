@@ -12,5 +12,10 @@
 * Serilog
 
 ## Instructions
-Clone and run the the app in VS 2019, it will launch SwaggerUI. Use SwaggerUI's "Try It Out" to test the api.
+Clone the repo and run the app in VS 2019, it will launch SwaggerUI. Use SwaggerUI's "Try It Out" to test the api.
+
+Initial view
+![SwaggerUI](swagger-ui-0.png)
+
+After expanding
 ![SwaggerUI](swagger-ui.png)
