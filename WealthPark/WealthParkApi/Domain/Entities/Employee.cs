@@ -19,11 +19,11 @@ namespace WealthParkApi.Domain.Entities
         public long Id { get; set; }
 
         [Required]
-        [MaxLength(15), MinLength(3)]
+        [MinLength(3)]
         public string FirstName { get; set; }
 
         [Required]
-        [MaxLength(15), MinLength(3)]
+        [MinLength(3)]
         public string LastName { get; set; }
 
         [Required]
