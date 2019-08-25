@@ -4,6 +4,11 @@
         <name>WealthParkApi</name>
     </assembly>
     <members>
+        <member name="T:WealthParkApi.Converters.IsoDateConverter">
+            <summary>
+            Converter for DOB
+            </summary>
+        </member>
         <member name="T:WealthParkApi.Domain.EmployeeDbContext">
             <summary>
             Employee DbContext
@@ -73,6 +78,54 @@
             Deletes an entity
             </summary>
             <param name="entityToDelete">Entity to delete</param>
+        </member>
+        <member name="T:WealthParkApi.Domain.IEmployeeService">
+            <summary>
+            EmployeeService interface
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.GetEmployees(System.Nullable{System.Int32},WealthParkApi.Models.EmployeeSearchModel)">
+            <summary>
+            Gets employees with optional paging and filter
+            </summary>
+            <param name="page">No. of the page to fetch (page size : 25 items)</param>
+            <param name="searchModel">Filter criteria</param>
+            <returns>Employee DTO list</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.GetEmployee(System.Int64)">
+            <summary>
+            Finds an employee by id
+            </summary>
+            <param name="id">Id of the employee to find</param>
+            <returns>Employee DTO</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.CreateEmployee(WealthParkApi.Models.CreateEmployeeDto)">
+            <summary>
+            Creates employee
+            </summary>
+            <param name="employee">Employee to create</param>
+            <returns>Id of the newly created employee</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.UpdateEmployee(System.Int64,WealthParkApi.Models.UpdateEmployeeDto)">
+            <summary>
+            Updates employee
+            </summary>
+            <param name="id">Id of the employee to update</param>
+            <param name="employee">Employee DTO</param>
+            <returns>Updated employee DTO</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.DeleteEmployee(System.Int64)">
+            <summary>
+            Deletes an employee
+            </summary>
+            <param name="id">Id of the employee to delete</param>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeService.EmployeeExists(System.Int64)">
+            <summary>
+            Checks if an employee exists
+            </summary>
+            <param name="id">Id of the employee to check</param>
+            <returns></returns>
         </member>
         <member name="T:WealthParkApi.Exceptions.ApiException">
             <summary>
@@ -159,6 +212,32 @@
             <inheritdoc/>
         </member>
         <member name="M:WealthParkApi.Repositories.EmployeeRepository.Delete(WealthParkApi.Domain.Entities.Employee)">
+            <inheritdoc/>
+        </member>
+        <member name="T:WealthParkApi.Services.EmployeeService">
+            <summary>
+            Employee services class (contains all business logic)
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.#ctor(WealthParkApi.Domain.IEmployeeRepository,AutoMapper.IMapper)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.GetEmployees(System.Nullable{System.Int32},WealthParkApi.Models.EmployeeSearchModel)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.GetEmployee(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.CreateEmployee(WealthParkApi.Models.CreateEmployeeDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.UpdateEmployee(System.Int64,WealthParkApi.Models.UpdateEmployeeDto)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.DeleteEmployee(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Services.EmployeeService.EmployeeExists(System.Int64)">
             <inheritdoc/>
         </member>
         <member name="T:WealthParkApi.Utils.AppConstants">
