@@ -17,6 +17,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using WealthParkApi.Domain;
 using WealthParkApi.ExtensionMethods;
 using WealthParkApi.Repositories;
+using WealthParkApi.Services;
 using WealthParkApi.Utils;
 
 namespace WealthParkApi
@@ -47,7 +48,7 @@ namespace WealthParkApi
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             services.AddMvc(o => { o.UseGeneralRoutePrefix($"{AppConstants.ApiRoot}/{AppConstants.ApiVersion}"); })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
