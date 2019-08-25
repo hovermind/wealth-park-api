@@ -4,6 +4,64 @@
         <name>WealthParkApi</name>
     </assembly>
     <members>
+        <member name="T:WealthParkApi.Controllers.EmployeesController">
+            <summary>
+            Employees API controller class.
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.#ctor(WealthParkApi.Domain.IEmployeeService)">
+            <summary>
+            Employees API controller class constructor.
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.GetEmployees(System.Nullable{System.Int32},WealthParkApi.Models.EmployeeSearchModel)">
+            <summary>
+            Returns all employees
+            </summary>
+            <para>Ppagination and filtering are enabled. By default it will send all employees if page and search query params are not set</para>
+            <param name="page">No. of the page to fetch</param>
+            <param name="searchModel">Optional search criteria</param>
+            <returns>List of employees</returns>
+            <response code="200">Returns employee list</response> 
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.GetEmployee(System.Int32)">
+            <summary>
+            Returns employee for specified id
+            </summary>
+            <param name="id">Employee id</param>
+            <returns>List of employees</returns>
+            <response code="200">Employee for the given id</response> 
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.Post(WealthParkApi.Models.CreateEmployeeDto)">
+            <summary>
+            Creates an employee
+            </summary>
+            <param name="employee">Employee DTO</param>
+            <returns>Id of the newly created employee</returns>
+            <response code="201">Employee created</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.Put(System.Int32,WealthParkApi.Models.UpdateEmployeeDto)">
+            <summary>
+            Updates an employee for specified id
+            </summary>
+            <param name="id">Id of the employee to update</param>
+            <param name="employee">Employee DTO</param>
+            <returns>Updated employee</returns>
+            <response code="200">Employee updated</response>
+            <response code="404">No employee found for given id</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:WealthParkApi.Controllers.EmployeesController.Delete(System.Int64)">
+            <summary>
+            Deletes an employee for specified id
+            </summary>
+            <param name="id">Id of the employee to delete</param>
+            <returns>Updated employee</returns>
+            <response code="204">Employee deleted</response>
+            <response code="404">No employee found for given id</response>
+            <response code="500">Internal server error</response>
+        </member>
         <member name="T:WealthParkApi.Converters.IsoDateConverter">
             <summary>
             Converter for DOB
@@ -260,9 +318,29 @@
             Title for Open API (Swagger) doc
             </summary>
         </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.ApiDescription">
+            <summary>
+            Description for Open API (Swagger) doc
+            </summary>
+        </member>
         <member name="F:WealthParkApi.Utils.AppConstants.ApiVersion">
             <summary>
             Version for Open API (Swagger) doc
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.DevName">
+            <summary>
+            Developer name
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.DevEmail">
+            <summary>
+            Developer email
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.DevWebsite">
+            <summary>
+            Developer website
             </summary>
         </member>
         <member name="T:WealthParkApi.Utils.DBSeeder">

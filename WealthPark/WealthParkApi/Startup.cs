@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using WealthParkApi.Domain;
 using WealthParkApi.ExtensionMethods;
 using WealthParkApi.Repositories;
 using WealthParkApi.Services;
 using WealthParkApi.Utils;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WealthParkApi
 {
@@ -60,8 +55,8 @@ namespace WealthParkApi
                 {
                     Version = AppConstants.ApiVersion,
                     Title = AppConstants.ApiTitle,
-                    Description = "Wealth Park Kintai (ASP.NET Core Web API)",
-                    Contact = new Contact() { Name = "Hassan", Email = "console041@gmail.com", Url = "hovermind.com" }
+                    Description = AppConstants.ApiDescription,
+                    Contact = new Contact() { Name = AppConstants.DevName, Email = AppConstants.DevEmail, Url = AppConstants.DevWebsite }
                 });
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "WealthParkApiDoc.xml");
@@ -69,6 +64,11 @@ namespace WealthParkApi
             });
 
 
+        }
+
+        private Swashbuckle.AspNetCore.Swagger.Contact Contact()
+        {
+            throw new NotImplementedException();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -87,6 +87,7 @@ namespace WealthParkApi
             // config. exception handling middleware before mvc middleware
             app.ConfigureAppMiddlewares();
 
+            app.UseStaticFiles();
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
@@ -94,7 +95,7 @@ namespace WealthParkApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"{AppConstants.ApiVersion}/swagger.json", AppConstants.ApiTitle);
-                c.RoutePrefix = string.Empty;
+                c.RoutePrefix = @"swagger";
             });
 
             app.UseHttpsRedirection();
