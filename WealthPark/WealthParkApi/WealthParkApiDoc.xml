@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WealthParkApi</name>
+    </assembly>
+    <members>
+        <member name="T:WealthParkApi.Domain.EmployeeDbContext">
+            <summary>
+            Employee DbContext
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Domain.EmployeeDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{WealthParkApi.Domain.EmployeeDbContext})">
+            <summary>
+            DbContext ctor for DI
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:WealthParkApi.Domain.EmployeeDbContext.Employees">
+            <summary>
+            Employees DB set
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Domain.Entities.Employee">
+            <summary>
+            Employee entity
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Domain.IEmployeeRepository">
+            <summary>
+            Interface for DI of employee repository
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.GetAll(WealthParkApi.Models.EmployeeSearchModel,System.Collections.Generic.List{WealthParkApi.Filters.SearchFieldMutator{WealthParkApi.Domain.Entities.Employee,WealthParkApi.Models.EmployeeSearchModel}})">
+            <summary>
+            Get all employees with search filter only
+            </summary>
+            <param name="searchModel">Search criteria model</param>
+            <param name="searchFieldMutators">Query mutator to apply logic dynamically</param>
+            <returns>Employee entity list</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.GetAll(System.Int32,System.Int32,WealthParkApi.Models.EmployeeSearchModel,System.Collections.Generic.List{WealthParkApi.Filters.SearchFieldMutator{WealthParkApi.Domain.Entities.Employee,WealthParkApi.Models.EmployeeSearchModel}})">
+            <summary>
+            Get all employees with search filter and paging
+            </summary>
+            <param name="skipSize">Nunmber of items to skip</param>
+            <param name="takeSize">Number of items to take</param>
+            <param name="searchModel">Search criteria model</param>
+            <param name="searchFieldMutators">Query mutator to apply logic dynamically</param>
+            <returns>Employee entity list</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.Get(System.Int64)">
+            <summary>
+            Get a single entity by id
+            </summary>
+            <param name="id">Entity id</param>
+            <returns>Entity</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.Add(WealthParkApi.Domain.Entities.Employee)">
+            <summary>
+            Add an entity
+            </summary>
+            <param name="newEntity">Entity to create</param>
+            <returns>Id of newly created entity</returns>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.Update(WealthParkApi.Domain.Entities.Employee)">
+            <summary>
+            Updates an entity
+            </summary>
+            <param name="modifiedEntity">Entity to modify</param>
+        </member>
+        <member name="M:WealthParkApi.Domain.IEmployeeRepository.Delete(WealthParkApi.Domain.Entities.Employee)">
+            <summary>
+            Deletes an entity
+            </summary>
+            <param name="entityToDelete">Entity to delete</param>
+        </member>
+        <member name="T:WealthParkApi.Exceptions.ApiException">
+            <summary>
+            App realted exception
+            </summary>
+        </member>
+        <member name="P:WealthParkApi.Exceptions.ApiException.StatusCode">
+            <summary>
+            Http status code
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Exceptions.ApiException.#ctor(System.Int32,System.String)">
+            <summary>
+            Exception ctor with status code and message
+            </summary>
+            <param name="statusCode"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:WealthParkApi.Exceptions.ApiException.#ctor(System.String,System.Exception)">
+            <summary>
+            Exception ctor with message only
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:WealthParkApi.ExtensionMethods.MiddlewareExtension">
+            <summary>
+            Extention method to add middlewares
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.ExtensionMethods.MvcOptionsExtensions">
+            <summary>
+            MvcOptions extensions to add global route prefix
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Filters.SearchFieldMutator`2">
+            <summary>
+            Query mutator for search filter (using strategy design pattern)
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <typeparam name="TSearch"></typeparam>
+        </member>
+        <member name="T:WealthParkApi.Middlewares.ApiExceptionMiddleware">
+            <summary>
+            ApiException handling middleware
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Models.EmployeeSearchModel">
+            <summary>
+            Search filter model
+            </summary>
+        </member>
+        <member name="P:WealthParkApi.Models.EmployeeSearchModel.FirstName">
+            <summary>
+            First name of the employee to search by
+            </summary>
+        </member>
+        <member name="P:WealthParkApi.Models.EmployeeSearchModel.LastName">
+            <summary>
+            Last name of the employee to search by
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Repositories.EmployeeRepository">
+            <summary>
+            Implementation of generic repository for employee
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.#ctor(WealthParkApi.Domain.EmployeeDbContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.GetAll(WealthParkApi.Models.EmployeeSearchModel,System.Collections.Generic.List{WealthParkApi.Filters.SearchFieldMutator{WealthParkApi.Domain.Entities.Employee,WealthParkApi.Models.EmployeeSearchModel}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.GetAll(System.Int32,System.Int32,WealthParkApi.Models.EmployeeSearchModel,System.Collections.Generic.List{WealthParkApi.Filters.SearchFieldMutator{WealthParkApi.Domain.Entities.Employee,WealthParkApi.Models.EmployeeSearchModel}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.Get(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.Add(WealthParkApi.Domain.Entities.Employee)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.Update(WealthParkApi.Domain.Entities.Employee)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WealthParkApi.Repositories.EmployeeRepository.Delete(WealthParkApi.Domain.Entities.Employee)">
+            <inheritdoc/>
+        </member>
+        <member name="T:WealthParkApi.Utils.AppConstants">
+            <summary>
+            Apllication constants
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.PageSize">
+            <summary>
+            Page size (pagination) - number of items per page
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.ApiRoot">
+            <summary>
+            Global route prefix
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.ApiTitle">
+            <summary>
+            Title for Open API (Swagger) doc
+            </summary>
+        </member>
+        <member name="F:WealthParkApi.Utils.AppConstants.ApiVersion">
+            <summary>
+            Version for Open API (Swagger) doc
+            </summary>
+        </member>
+        <member name="T:WealthParkApi.Utils.DBSeeder">
+            <summary>
+            Database initializer
+            </summary>
+        </member>
+        <member name="M:WealthParkApi.Utils.DBSeeder.Seed(WealthParkApi.Domain.EmployeeDbContext)">
+            <summary>
+            DBSeeder ctor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WealthParkApi.Utils.DBSeeder.GetDummyEmployeeList">
+            <summary>
+            Provides dummy data
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
