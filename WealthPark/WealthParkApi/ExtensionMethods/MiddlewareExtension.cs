@@ -11,6 +11,7 @@ namespace WealthParkApi.ExtensionMethods
         public static void ConfigureAppMiddlewares(this IApplicationBuilder app)
         {
             app.UseMiddleware<ApiExceptionMiddleware>();
+            app.UseMiddleware<SerilogMiddleware>();
         }
     }
 }
