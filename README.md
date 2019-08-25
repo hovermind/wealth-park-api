@@ -11,3 +11,6 @@
 * Moq
 * Serilog
 
+## Instructions
+Clone and run the the app in VS 2019, it will launch Open SwaggerUI. Use SwaggerUI's "Try It Out" to test the api.
+![SwaggerUI](swagger-ui.png)
