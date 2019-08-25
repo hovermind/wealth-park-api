@@ -28,3 +28,4 @@ namespace WealthParkApi.Filters
             return Condition(search) ? Mutator(query, search) : query;
         }
     }
+}
